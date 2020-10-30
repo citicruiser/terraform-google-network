@@ -2,6 +2,10 @@ terraform {
   # The modules used in this example have been updated with 0.12 syntax, which means the example is no longer
   # compatible with any versions below 0.12.
   required_version = ">= 0.12"
+  backend "gcs" {
+    bucket  = "tf-state-demo1-essextec"
+    prefix  = "terraform/state"
+  }
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -29,7 +33,7 @@ module "bastion_host" {
   # source = "github.com/gruntwork-io/terraform-google-network.git//modules/bastion-host?ref=v0.1.2"
   source = "../../modules/bastion-host"
 
-  instance_name = "${var.name_prefix}-vm"
+  instance_name = "${var.name_prefix}-bastion"
   subnetwork    = module.management_network.public_subnetwork
 
   project = var.project
@@ -42,6 +46,7 @@ module "bastion_host" {
 
 resource "google_compute_instance" "private" {
   name         = "${var.name_prefix}-private"
+  project      = var.project
   machine_type = "n1-standard-1"
   zone         = var.zone
 

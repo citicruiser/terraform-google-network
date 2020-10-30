@@ -8,6 +8,13 @@ terraform {
 # Create a Management Network for shared services
 # ---------------------------------------------------------------------------------------------------------------------
 
+terraform {
+  backend "gcs" {
+    bucket  = "tf-state-demo1-essextec"
+    prefix  = "terraform/state"
+  }
+}
+
 module "management_network" {
   # When using these modules in your own templates, you will need to use a Git URL with a ref attribute that pins you
   # to a specific version of the modules, such as the following example:
@@ -28,9 +35,12 @@ data "google_compute_zones" "available" {
   region  = var.region
 }
 
+
 // This instance acts as an arbitrary internet address for testing purposes
+/*
 resource "google_compute_instance" "default_network" {
   name         = "${var.name_prefix}-default-network"
+  project      = var.project
   machine_type = "n1-standard-1"
   zone         = data.google_compute_zones.available.names[0]
 
@@ -51,7 +61,9 @@ resource "google_compute_instance" "default_network" {
   }
 }
 
+
 resource "google_compute_instance" "public_with_ip" {
+  project      = var.project
   name         = "${var.name_prefix}-public-with-ip"
   machine_type = "n1-standard-1"
   zone         = data.google_compute_zones.available.names[0]
@@ -77,6 +89,7 @@ resource "google_compute_instance" "public_with_ip" {
 
 resource "google_compute_instance" "public_without_ip" {
   name         = "${var.name_prefix}-public-without-ip"
+  project      = var.project
   machine_type = "n1-standard-1"
   zone         = data.google_compute_zones.available.names[0]
 
@@ -97,6 +110,7 @@ resource "google_compute_instance" "public_without_ip" {
 
 resource "google_compute_instance" "private_public" {
   name         = "${var.name_prefix}-private-public"
+  project      = var.project
   machine_type = "n1-standard-1"
   zone         = data.google_compute_zones.available.names[0]
 
@@ -117,6 +131,7 @@ resource "google_compute_instance" "private_public" {
 
 resource "google_compute_instance" "private" {
   name         = "${var.name_prefix}-private"
+  project      = var.project
   machine_type = "n1-standard-1"
   zone         = data.google_compute_zones.available.names[0]
 
@@ -137,6 +152,7 @@ resource "google_compute_instance" "private" {
 
 resource "google_compute_instance" "private_persistence" {
   name         = "${var.name_prefix}-private-persistence"
+  project      = var.project
   machine_type = "n1-standard-1"
   zone         = data.google_compute_zones.available.names[0]
 
@@ -155,3 +171,4 @@ resource "google_compute_instance" "private_persistence" {
   }
 }
 
+*/

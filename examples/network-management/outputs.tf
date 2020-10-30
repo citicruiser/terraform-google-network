@@ -67,7 +67,7 @@ output "private_persistence" {
 # ---------------------------------------------------------------------------------------------------------------------
 # Instance Info (primarily for testing)
 # ---------------------------------------------------------------------------------------------------------------------
-
+/*
 output "instance_default_network" {
   description = "A reference (self link) to an instance in the default network. Note that the default network allows SSH."
   value       = google_compute_instance.default_network.self_link
@@ -98,3 +98,4 @@ output "instance_private_persistence" {
   value       = google_compute_instance.private_persistence.self_link
 }
 
+*/
