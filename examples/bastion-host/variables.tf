@@ -29,6 +29,6 @@ variable "zone" {
 variable "name_prefix" {
   description = "A name prefix used in resource names to ensure uniqueness across a project."
   type        = string
-  default     = "demo-power"
+  default     = "demo1-power"
 }
 

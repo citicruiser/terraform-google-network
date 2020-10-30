@@ -23,6 +23,30 @@ module "management_network" {
   region      = var.region
 }
 
+module "management_network2" {
+  # When using these modules in your own templates, you will need to use a Git URL with a ref attribute that pins you
+  # to a specific version of the modules, such as the following example:
+  # source = "github.com/gruntwork-io/terraform-google-network.git//modules/vpc-network?ref=v0.1.2"
+  source = "../../modules/vpc-network"
+
+  name_prefix = "demo2-power"
+  project     = var.project
+  region      = var.region
+  cidr_block  = "10.2.0.0/16"
+  secondary_cidr_block = "10.3.0.0/16"
+}
+
+# ---------------------------------------------------------------------------------------------------------------------
+# Create VPC Peering between network1 and network2
+# ---------------------------------------------------------------------------------------------------------------------
+
+module "vpc_peering" {
+  source = "../../modules/network-peering"
+
+  first_network  = module.management_network.network
+  second_network = module.management_network2.network
+}
+
 # ---------------------------------------------------------------------------------------------------------------------
 # Create the bastion host to access private instances
 # ---------------------------------------------------------------------------------------------------------------------
