@@ -12,7 +12,7 @@ This is to demo terraform capability to do the following:
 1. Install Terraform v0.12.x
 1. Export GOOGLE_APPLICATION_CREDENTIALS to your gcp key file.   
 i.e. `export GOOGLE_APPLICATION_CREDENTIALS=~/Documents/gcp-key/etg-prj-hyc-ibm-power-beta-1629154d27a2.json`
-1. Make sure the bucket defined in terrafrorm backend in main.tf does exist. If not, create a new bucket.
+1. Create a bucket for terraform state file.  Enter the bucket name in terraform backend in main.tf.
 i.e. `bucket  = "tf-state-demo1-essextec"`
 1. Open variables.tf, and fill in any required variables.
 1. Run `terraform init`.
