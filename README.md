@@ -12,6 +12,7 @@ This is to demo terraform capability to do the following:
 1. Install Terraform v0.12.29
 1. Export GOOGLE_APPLICATION_CREDENTIALS to your gcp key file.   
 i.e. `export GOOGLE_APPLICATION_CREDENTIALS=~/Documents/gcp-key/etg-prj-hyc-ibm-power-beta-1629154d27a2.json`
+1. Open variables.tf, and fill in any required variables that don't have a default.
 1. Run `terraform init`.
 1. Run `terraform plan`.
 1. If the plan looks good, run `terraform apply`.
