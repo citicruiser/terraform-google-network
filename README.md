@@ -9,7 +9,7 @@ This is to demo terraform capability to do the following:
 
 # Usage: 
 
-1. Install Terraform v0.12.x
+1. Install latest of Terraform v0.12.x
 1. Export GOOGLE_APPLICATION_CREDENTIALS to your gcp key file.   
 i.e. `export GOOGLE_APPLICATION_CREDENTIALS=~/Documents/gcp-key/etg-prj-hyc-ibm-power-beta-1629154d27a2.json`
 1. Create a bucket for terraform state file.  Enter the bucket name in terraform backend in main.tf.
